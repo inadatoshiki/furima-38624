@@ -26,9 +26,9 @@
 | content          | text                | null: false                    |
 | category_id      | integer             | null: false                    |
 | condition_id     | integer             | null: false                    |
-| who_pay_id       | integer             | null: false                    |
+| payer_id         | integer             | null: false                    |
 | prefecture_id    | integer             | null: false                    |
-| days_ship_id     | integer             | null: false                    |
+| days_id          | integer             | null: false                    |
 | price            | integer             | null: false                    |
 | user             | references          | null: false, foreign_key: true |
 
