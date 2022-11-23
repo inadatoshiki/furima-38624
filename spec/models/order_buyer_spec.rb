@@ -24,7 +24,7 @@ RSpec.describe OrderBuyer, type: :model do
       it '郵便番号がないと購入できない' do
         @order_buyer.post_code = ''
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Post code can't be blank", "Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_buyer.errors.full_messages).to include("Post code can't be blank")
       end
       it '郵便番号はハイフンがないと購入できない' do
         @order_buyer.post_code = '2222222'
