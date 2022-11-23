@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :sold_out, only: [:index]
   
   def index 
     @item = Item.find(params[:item_id])
     @order_buyer = OrderBuyer.new
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end  
   end
   
   def create
@@ -31,4 +36,11 @@ class OrdersController < ApplicationController
         currency: 'jpy'    
       )
     end  
+
+    def sold_out
+      if Order.exists?(item_id: params[:item_id])
+          redirect_to root_path
+       end
+    end
+
 end    
