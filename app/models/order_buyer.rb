@@ -9,7 +9,7 @@ class OrderBuyer
     validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :city
     validates :address
-    validates :phone, format: {with: /\A[0-9]{10,11}\z/, message: "is invalid. Input only number" }
+    validates :phone, format: {with: /\A[0-9]{10,11}\z/, length: { minimum: 10, maximum: 11 } }
   end  
 
   def save
