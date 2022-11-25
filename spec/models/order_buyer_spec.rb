@@ -29,12 +29,12 @@ RSpec.describe OrderBuyer, type: :model do
       it '郵便番号はハイフンがないと購入できない' do
         @order_buyer.post_code = '2222222'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_buyer.errors.full_messages).to include("Post code は半角数字で間にハイフンを入れて入力してください (例 123-4567)")
       end
       it '郵便番号は全角文字列だと購入できない' do
         @order_buyer.post_code = '２２３−２２２２'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_buyer.errors.full_messages).to include("Post code は半角数字で間にハイフンを入れて入力してください (例 123-4567)")
       end
       it '都道府県がないと購入できない' do
         @order_buyer.prefecture_id = ''
@@ -44,7 +44,7 @@ RSpec.describe OrderBuyer, type: :model do
       it '都道府県に「---」が選択されている場合は購入できない' do
         @order_buyer.prefecture_id = '1'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_buyer.errors.full_messages).to include("Prefecture を選択してください")
       end  
       it '市区町村がないと購入できない' do
         @order_buyer.city = ''
